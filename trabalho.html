@@ -4,9 +4,111 @@
 
     <meta charset="UTF-8">
     <title>Meu formulário</title>
+
+<style>
+    /* Aparência geral da página */
+    body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+
+    /* Título principal */
+    header {
+        background-color: #2e7d32;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Menu de navegação */
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        text-decoration: none;
+    }
+
+    nav button {
+        background-color: white;
+        color: #2e7d32;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    nav button:hover {
+        background-color: #c8e6c9;
+    }
+
+    /* Organização das seções */
+    section {
+        background-color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    /* Títulos das seções */
+    h2 {
+        color: #2e7d32;
+    }
+
+    /* Campos dos formulários */
+    input, select, textarea {
+        padding: 8px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Botões de cadastro */
+    button {
+        cursor: pointer;
+    }
+
+    /* Tabelas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #c8e6c9;
+    }
+</style>
+
+    
 </head>
 
 <body>  
+
+    <header>
+    <h1>Vida Animal - Proteção dos Animais</h1>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav>
+        <a href="#inicio"><button>Início</button></a>
+        <a href="#animais"><button>Cadastro de Animais</button></a>
+        <a href="#interessados"><button>Interessados</button></a>
+        <a href="#adocao"><button>Solicitação de Adoção</button></a>
+        <a href="#acompanhamento"><button>Acompanhamento</button></a>
+    </nav>
+</header>
+
+<main>
+     <section id="Animais">
+        <h2>Cadastro de Animais</h2>
 
 <form> 
     <label>Nome do animal</label>
@@ -52,15 +154,175 @@
        <br><br>
 
        <button class="Salvar">Cadastro Animal</button>
-       //cu
+       
 
 </form>
 
 
+        <h2>Animais cadastrados</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Espécie</th>
+                    <th>Raça</th>
+                    <th>idade</th>
+                    <th>sexo</th>
+                    <th>porte</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="listaAnimais"></tbody>
+        </table>
+    </section>
+
+<section id="interessados">
+    <h2>Cadastro de interessados</h2>
+
+<form>
+    <label>Nome</label>
+    <input type="text" id="nome Completo" required>
+    <br>
+    <label>E-mail</label>
+    <input type="email" id="emailInteressado" required>
+    <br>
+    <label>Telefone</label>
+    <input type="text" id="telefoneInteressado">
+    <br>
+    <label>Cidade</label>
+    <input type="text" id="cidadeInteressado">
+    <br>
+    <label>Possui outros animais?</label>
+    <select id="possuiAnimal" required>
+        <option value="">Selecione</option>
+        <option>Sim</option>
+        <option>Nao</option>
+    </select>
+    <br>
+    <label>Experiencia com animais?</label>
+    <select id="experienciaAnimal" required>
+        <option value="">Selecione</option>
+        <option>Sim</option>
+        <option>Nao</option>
+    </select>
+    <label>Por que deseja adotar?</label>
+        <textarea id="motivoAdocao" required></textarea>
+    <button class="Salvar">Cadastrar interessados</button>
+
+</form>
+
+
+        <h2>Animais cadastrados</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>telefone</th>
+            
+                </tr>
+            </thead>
+            <tbody id="listaInteressados"></tbody>
+        </table>
+    </section>
+
+<section id="Adocao">
+    <h2>Solicitacao de adocao</h2>
+
+    <form>
+        <label>interessado</label>
+        <select id="interessadoSelect" required>
+            <option>Selecione</option>
+        </select>
+        <br>
+
+        <label>Animal</label>
+           <select id="animalSelect" required>
+            <option>Selecione</option>
+        </select>
+        <br>
+        <label>Justificativa:</label>
+            <textarea id="justificativa" required></textarea>
+            <br>
+
+        <button class="Salvar">Solicitacao adocao</button>
+ </form>
+
+
+        <h2>Animais cadastrados</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>interessado</th>
+                    <th>Animal</th>
+                    <th>Justificativa</th>
+            
+                </tr>
+            </thead>
+            <tbody id="listaInteressados"></tbody>
+        </table>
+    </section>
+
+  <section id="acompanhamento">
+        <h2>Acompanhamento da adoção</h2>
+
+        <label>Solicitação:</label>
+        <select id="solicitacaoSelect">
+            <option value="">Selecione</option>
+        </select>
+
+        <label>Etapa:</label>
+        <select id="etapa">
+            <option>Em análise</option>
+            <option>Entrevista</option>
+            <option>Visita</option>
+            <option>Aprovada</option>
+            <option>Concluída</option>
+            <option>Rejeitada</option>
+        </select>
+
+        <label>Observação:</label>
+        <textarea id="observacao"></textarea>
+
+        <button class="salvar" onclick="atualizarProcesso()">
+            Atualizar processo
+        </button>
+             <h2>Histórico</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Solicitação</th>
+                    <th>Etapa</th>
+                    <th>Observação</th>
+                </tr>
+            </thead>
+            <tbody id="historico"></tbody>
+        </table>
+    </section>
+
+</main>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
 
 </body>
 
