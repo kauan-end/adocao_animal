@@ -104,6 +104,7 @@
         <a href="#interessados"><button>Interessados</button></a>
         <a href="#adocao"><button>Solicitação de Adoção</button></a>
         <a href="#acompanhamento"><button>Acompanhamento</button></a>
+        <a href="#administracao"><button>Administração</button></a>
     </nav>
 </header>
 
@@ -327,6 +328,58 @@
             <tbody id="historico"></tbody>
         </table>
     </section>
+
+    <
+<!-- ADMINISTRAÇÃO DE SOLICITAÇÕES -->
+
+<section id="administracao">
+    <h2>Administração de Solicitações</h2>
+
+    <h3>Solicitações recebidas</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Interessado</th>
+                <th>Animal</th>
+                <th>Justificativa</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaAdmin"></tbody>
+    </table>
+
+    <h3>Decisão do administrador</h3>
+
+    <form id="formAdmin">
+
+        <label>Selecione a solicitação:</label>
+        <select name="solicitacaoAdmin" required>
+            <option value="">Selecione...</option>
+        </select>
+
+        <br><br>
+
+        <label>Decisão:</label>
+        <select name="decisao" required>
+            <option value="">Selecione...</option>
+            <option value="Aprovada">Aprovar</option>
+            <option value="Rejeitada">Rejeitar</option>
+        </select>
+
+        <br><br>
+
+        <label>Observação do administrador:</label>
+        <textarea name="observacaoAdmin"></textarea>
+
+        <br><br>
+
+        <button type="submit">Registrar decisão</button>
+
+    </form>
+</section>
+
 
 </main>
 
