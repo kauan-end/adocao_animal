@@ -1,19 +1,17 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="UTF-8">
     <title>Meu formulário</title>
 
 <style>
-    /* Aparência geral da página */
     body {
         background-color: #f2f2f2;
         font-family: Arial, sans-serif;
         margin: 0;
     }
 
-    /* Título principal */
     header {
         background-color: #2e7d32;
         color: white;
@@ -21,7 +19,6 @@
         text-align: center;
     }
 
-    /* Menu de navegação */
     nav {
         margin-top: 15px;
     }
@@ -44,7 +41,6 @@
         background-color: #c8e6c9;
     }
 
-    /* Organização das seções */
     section {
         background-color: white;
         margin: 20px;
@@ -52,12 +48,10 @@
         border-radius: 8px;
     }
 
-    /* Títulos das seções */
     h2 {
         color: #2e7d32;
     }
 
-    /* Campos dos formulários */
     input, select, textarea {
         padding: 8px;
         margin: 5px;
@@ -65,12 +59,10 @@
         border-radius: 5px;
     }
 
-    /* Botões de cadastro */
     button {
         cursor: pointer;
     }
 
-    /* Tabelas */
     table {
         width: 100%;
         border-collapse: collapse;
@@ -86,31 +78,26 @@
     th {
         background-color: #c8e6c9;
     }
-/* Esconde todas as seções */
-main section {
-    display: none;
-}
 
-/* Mostra a seção selecionada */
-main section:target {
-    display: block;
-}
+    main section {
+        display: none;
+    }
 
-/* Mostra o início quando abrir o site */
-main:not(:has(section:target)) #inicio {
-    display: block;
-}
+    main section:target {
+        display: block;
+    }
+
+    main:not(:has(section:target)) #inicio {
+        display: block;
+    }
 </style>
-
-    
 </head>
 
-<body>  
+<body>
 
-    <header>
+<header>
     <h1>Vida Animal - Adoção de Animais</h1>
 
- 
     <nav>
         <a href="#inicio"><button>Início</button></a>
         <a href="#animais"><button>Cadastro de Animais</button></a>
@@ -121,61 +108,64 @@ main:not(:has(section:target)) #inicio {
 </header>
 
 <main>
+
     <section id="inicio">
-    <h2>Início</h2>
-    <p>Bem-vindo ao sistema Vida Animal.</p>
+        <h2>Início</h2>
+        <p>Bem-vindo ao sistema Vida Animal.</p>
     </section>
+
+ 
+
     <section id="animais">
         <h2>Cadastro de Animais</h2>
 
-<form> 
-    <label>Nome do animal</label>
-    <input type="text" id="nome">
-    <br><br>
+        <form id="formAnimal">
 
-    <label>Especie</label>
-    <select id="especieAnimal" required>
-        
-        <option value="">Selecione...</option>
-        <option>Cachorro</option>
-        <option>Gato</option>
-        <option>outro</option>
-    </select>
+            <label>Nome do animal</label>
+            <input type="text" name="nome" required>
+            <br><br>
 
-    <label>Raça</label>
-    <input type="text" id="nome">
-    <br><br>
-    <label>Idade</label>
-    <input type="number" id="idadeAnimal" min="0">
-    <br><br>
-    
-    <label>Sexo</label>
-        <select id="sexoAnimal" required>
-        <option value="">Selecione...</option>
-        <option>Macho</option>
-        <option>femea</option>
+            <label>Espécie</label>
+            <select name="especie" required>
+                <option value="">Selecione...</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+                <option value="Outro">Outro</option>
+            </select>
 
-       </select>
-       <br><br>
-       <label>Porte</label>
-        <select id="porteAnimal" required>
-        <option value="">Selecione...</option>
-        <option>Pequeno</option>
-        <option>Medio</option>
-        <option>Grande</option>
-        <option>Gigante</option>
-        </select>
-       <br><br>
+            <label>Raça</label>
+            <input type="text" name="raca">
+            <br><br>
 
-       <label>Descrição</label>
-       <textarea id="descricaoAnimal"></textarea>
-       <br><br>
+            <label>Idade</label>
+            <input type="number" name="idade" min="0" required>
+            <br><br>
 
-       <button class="Salvar">Cadastro Animal</button>
-       
+            <label>Sexo</label>
+            <select name="sexo" required>
+                <option value="">Selecione...</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
+            </select>
+            <br><br>
 
-</form>
+            <label>Porte</label>
+            <select name="porte" required>
+                <option value="">Selecione...</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
+                <option value="Gigante">Gigante</option>
+            </select>
+            <br><br>
 
+            <label>Descrição</label>
+            <textarea name="descricao"></textarea>
+            <br><br>
+
+            <button type="submit">Cadastro Animal</button>
+
+        </form>
 
         <h2>Animais cadastrados</h2>
 
@@ -185,9 +175,9 @@ main:not(:has(section:target)) #inicio {
                     <th>Nome</th>
                     <th>Espécie</th>
                     <th>Raça</th>
-                    <th>idade</th>
-                    <th>sexo</th>
-                    <th>porte</th>
+                    <th>Idade</th>
+                    <th>Sexo</th>
+                    <th>Porte</th>
                     <th>Descrição</th>
                 </tr>
             </thead>
@@ -195,120 +185,136 @@ main:not(:has(section:target)) #inicio {
         </table>
     </section>
 
-<section id="interessados">
-    <h2>Cadastro de interessados</h2>
 
-<form>
-    <label>Nome</label>
-    <input type="text" id="nome Completo" required>
-    <br>
-    <label>E-mail</label>
-    <input type="email" id="emailInteressado" required>
-    <br>
-    <label>Telefone</label>
-    <input type="text" id="telefoneInteressado">
-    <br>
-    <label>Cidade</label>
-    <input type="text" id="cidadeInteressado">
-    <br>
-    <label>Possui outros animais?</label>
-    <select id="possuiAnimal" required>
-        <option value="">Selecione</option>
-        <option>Sim</option>
-        <option>Nao</option>
-    </select>
-    <br>
-    <label>Experiencia com animais?</label>
-    <select id="experienciaAnimal" required>
-        <option value="">Selecione</option>
-        <option>Sim</option>
-        <option>Nao</option>
-    </select>
-    <label>Por que deseja adotar?</label>
-        <textarea id="motivoAdocao" required></textarea>
-    <button class="Salvar">Cadastrar interessados</button>
+    <section id="interessados">
+        <h2>Cadastro de interessados</h2>
 
-</form>
+        <form id="formInteressado">
 
+            <label>Nome</label>
+            <input type="text" name="nome" required>
+            <br>
 
-        <h2>Animais cadastrados</h2>
+            <label>E-mail</label>
+            <input type="email" name="email" required>
+            <br>
+
+            <label>Telefone</label>
+            <input type="text" name="telefone">
+            <br>
+
+            <label>Cidade</label>
+            <input type="text" name="cidade">
+            <br>
+
+            <label>Possui outros animais?</label>
+            <select name="possuiAnimal" required>
+                <option value="">Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+            <br>
+
+            <label>Experiência com animais?</label>
+            <select name="experiencia" required>
+                <option value="">Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+            <br>
+
+            <label>Por que deseja adotar?</label>
+            <textarea name="motivo" required></textarea>
+            <br>
+
+            <button type="submit">Cadastrar interessados</button>
+
+        </form>
+
+        <h2>Interessados cadastrados</h2>
 
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>telefone</th>
-            
+                    <th>Telefone</th>
                 </tr>
             </thead>
             <tbody id="listaInteressados"></tbody>
         </table>
     </section>
 
-<section id="adocao">
-    <h2>Solicitacao de adocao</h2>
+ 
 
-    <form>
-        <label>interessado</label>
-        <select id="interessadoSelect" required>
-            <option>Selecione</option>
-        </select>
-        <br>
+    <section id="adocao">
+        <h2>Solicitação de adoção</h2>
 
-        <label>Animal</label>
-           <select id="animalSelect" required>
-            <option>Selecione</option>
-        </select>
-        <br>
-        <label>Justificativa:</label>
-            <textarea id="justificativa" required></textarea>
+        <form id="formAdocao">
+
+            <label>Interessado</label>
+            <select name="interessado" required>
+                <option value="">Selecione</option>
+            </select>
             <br>
 
-        <button class="Salvar">Solicitacao adocao</button>
- </form>
+            <label>Animal</label>
+            <select name="animal" required>
+                <option value="">Selecione</option>
+            </select>
+            <br>
 
+            <label>Justificativa:</label>
+            <textarea name="justificativa" required></textarea>
+            <br>
 
-        <h2>Animais cadastrados</h2>
+            <button type="submit">Solicitação adoção</button>
+
+        </form>
+
+        <h2>Solicitações cadastradas</h2>
 
         <table>
             <thead>
                 <tr>
-                    <th>interessado</th>
+                    <th>Interessado</th>
                     <th>Animal</th>
                     <th>Justificativa</th>
-            
                 </tr>
             </thead>
             <tbody id="listaSolicitacoes"></tbody>
         </table>
     </section>
 
-  <section id="acompanhamento">
+
+    <section id="acompanhamento">
         <h2>Acompanhamento da adoção</h2>
 
-        <label>Solicitação:</label>
-        <select id="solicitacaoSelect">
-            <option value="">Selecione</option>
-        </select>
+        <form id="formAcompanhamento">
 
-        <label>Etapa:</label>
-        <select id="etapa">
-            <option>Em análise</option>
-            <option>Entrevista</option>
-            <option>Visita</option>
-            <option>Aprovada</option>
-            <option>Concluída</option>
-            <option>Rejeitada</option>
-        </select>
+            <label>Solicitação:</label>
+            <select name="solicitacao" required>
+                <option value="">Selecione</option>
+            </select>
 
-        <label>Observação:</label>
-        <textarea id="observacao"></textarea>
+            <label>Etapa:</label>
+            <select name="etapa" required>
+                <option value="Em análise">Em análise</option>
+                <option value="Entrevista">Entrevista</option>
+                <option value="Visita">Visita</option>
+                <option value="Aprovada">Aprovada</option>
+                <option value="Concluída">Concluída</option>
+                <option value="Rejeitada">Rejeitada</option>
+            </select>
 
-        <button class="salvar" onclick="atualizarProcesso()">
-            Atualizar processo
-        </button>
-             <h2>Histórico</h2>
+            <label>Observação:</label>
+            <textarea name="observacao"></textarea>
+
+            <button type="submit">Atualizar processo</button>
+
+        </form>
+
+        <h2>Histórico</h2>
 
         <table>
             <thead>
@@ -324,33 +330,7 @@ main:not(:has(section:target)) #inicio {
 
 </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</main>
+<script src="script.js"></script>
 
 </body>
-
-
-
-
-
-
-
-
-
-
 </html>
