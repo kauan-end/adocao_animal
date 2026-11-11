@@ -103,8 +103,8 @@
         <a href="#animais"><button>Cadastro de Animais</button></a>
         <a href="#interessados"><button>Interessados</button></a>
         <a href="#adocao"><button>Solicitação de Adoção</button></a>
-        <a href="#acompanhamento"><button>Acompanhamento</button></a>
-        <a href="#administracao"><button>Administração</button></a>
+        <a href="#acompanhamento"><button onclick="acompanhar()">Acompanhamento</button></a> 
+        <a href="#administracao"><button onclick="administrar()">Administração</button></a>
     </nav>
 </header>
 
@@ -164,7 +164,7 @@
             <textarea name="descricao"></textarea>
             <br><br>
 
-            <button type="submit">Cadastro Animal</button>
+           <button type="button" onclick="cadastrarAnimal()">Cadastro Animal</button>
 
         </form>
 
@@ -228,7 +228,7 @@
             <textarea name="motivo" required></textarea>
             <br>
 
-            <button type="submit">Cadastrar interessados</button>
+            <button type="button" onclick="cadastrarInteressado()">Cadastrar interessados</button>
 
         </form>
 
@@ -269,7 +269,7 @@
             <textarea name="justificativa" required></textarea>
             <br>
 
-            <button type="submit">Solicitação adoção</button>
+            <button type="button" onclick="solicitarAdocao()">Solicitação adoção</button>
 
         </form>
 
@@ -311,7 +311,7 @@
             <label>Observação:</label>
             <textarea name="observacao"></textarea>
 
-            <button type="submit">Atualizar processo</button>
+            <button type="button" onclick="atualizarAcompanhamento()">Atualizar processo</button>
 
         </form>
 
@@ -375,7 +375,7 @@
 
         <br><br>
 
-        <button type="submit">Registrar decisão</button>
+       <button type="button" onclick="decidirSolicitacao()"> Registrar decisão</button>
 
     </form>
 </section>
