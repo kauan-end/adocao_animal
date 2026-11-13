@@ -1,6 +1,9 @@
 <?php
 
     include "conexao.php";
+    $connect = mysqli_connect("localhost:3306","root","amora321","vida_animal");
+
+    echo "conexao efetuada";
 
     $nome_animal = $_POST["nome"];
     $especie_animal = $_POST["especie"];
