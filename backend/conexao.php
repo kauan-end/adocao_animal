@@ -1,9 +1,9 @@
 <?php
 
+    $connect = mysqli_connect("localhost:3306", "root", "amora321", "vida_animal");
 
-    $connect = mysqli_connect("localhost:3306","root","amora321","vida_animal");
-
-    echo "conexão efetuada."
-
+    if ($connect) {
+        mysqli_set_charset($connect, "utf8mb4");
+    }
 
 ?>

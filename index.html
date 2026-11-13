@@ -128,13 +128,13 @@ main:not(:has(section:target)) #inicio {
     <section id="animais">
         <h2>Cadastro de Animais</h2>
 
-<form> 
+<form id="formAnimal" onsubmit="event.preventDefault(); cadastrarAnimal();"> 
     <label for="nome">Nome do animal</label>
-    <input type="text" id="nome">
+    <input type="text" id="nome" name="nome">
     <br><br>
 
     <label for="especieAnimal">Especie</label>
-    <select id="especieAnimal" required>
+    <select id="especieAnimal" name="especie" required>
         
         <option value="">Selecione...</option>
         <option>Cachorro</option>
@@ -143,14 +143,14 @@ main:not(:has(section:target)) #inicio {
     </select>
 
     <label for="racaAnimal">Raça</label>
-    <input type="text" id="racaAnimal">
+    <input type="text" id="racaAnimal" name="raca">
     <br><br>
     <label for="idadeAnimal">Idade</label>
-    <input type="number" id="idadeAnimal" min="0">
+    <input type="number" id="idadeAnimal" name="idade" min="0">
     <br><br>
     
     <label for="sexoAnimal">Sexo</label>
-        <select id="sexoAnimal" required>
+        <select id="sexoAnimal" name="sexo" required>
         <option value="">Selecione...</option>
         <option>Macho</option>
         <option>femea</option>
@@ -158,7 +158,7 @@ main:not(:has(section:target)) #inicio {
        </select>
        <br><br>
        <label for="porteAnimal">Porte</label>
-        <select id="porteAnimal" required>
+        <select id="porteAnimal" name="porte" required>
         <option value="">Selecione...</option>
         <option>Pequeno</option>
         <option>Medio</option>
@@ -168,10 +168,10 @@ main:not(:has(section:target)) #inicio {
        <br><br>
 
        <label for="descricaoAnimal">Descrição</label>
-       <textarea id="descricaoAnimal"></textarea>
+       <textarea id="descricaoAnimal" name="descricao"></textarea>
        <br><br>
 
-       <button class="Salvar">Cadastro Animal</button>
+       <button type="submit" class="Salvar">Cadastro Animal</button>
        
 
 </form>
@@ -198,35 +198,35 @@ main:not(:has(section:target)) #inicio {
 <section id="interessados">
     <h2>Cadastro de interessados</h2>
 
-<form>
+<form id="formInteressado" onsubmit="event.preventDefault(); cadastrarInteressado();">
     <label for="nomeCompleto">Nome</label>
-    <input type="text" id="nomeCompleto" required>
+    <input type="text" id="nomeCompleto" name="nome" required>
     <br>
     <label for="emailInteressado">E-mail</label>
-    <input type="email" id="emailInteressado" required>
+    <input type="email" id="emailInteressado" name="email" required>
     <br>
     <label for="telefoneInteressado">Telefone</label>
-    <input type="text" id="telefoneInteressado">
+    <input type="text" id="telefoneInteressado" name="telefone">
     <br>
     <label for="cidadeInteressado">Cidade</label>
-    <input type="text" id="cidadeInteressado">
+    <input type="text" id="cidadeInteressado" name="cidade">
     <br>
     <label for="possuiAnimal">Possui outros animais?</label>
-    <select id="possuiAnimal" required>
+    <select id="possuiAnimal" name="possuiAnimal" required>
         <option value="">Selecione</option>
         <option>Sim</option>
         <option>Nao</option>
     </select>
     <br>
     <label for="experienciaAnimal">Experiencia com animais?</label>
-    <select id="experienciaAnimal" required>
+    <select id="experienciaAnimal" name="experienciaAnimal" required>
         <option value="">Selecione</option>
         <option>Sim</option>
         <option>Nao</option>
     </select>
     <label for="motivoAdocao">Por que deseja adotar?</label>
-        <textarea id="motivoAdocao" required></textarea>
-    <button class="Salvar">Cadastrar interessados</button>
+        <textarea id="motivoAdocao" name="motivoAdocao" required></textarea>
+    <button type="submit" class="Salvar">Cadastrar interessados</button>
 
 </form>
 
@@ -249,23 +249,23 @@ main:not(:has(section:target)) #inicio {
 <section id="adocao">
     <h2>Solicitacao de adocao</h2>
 
-    <form>
+    <form id="formAdocao" onsubmit="event.preventDefault(); solicitarAdocao();">
         <label for="interessadoSelect">interessado</label>
-        <select id="interessadoSelect" required>
-            <option>Selecione</option>
+        <select id="interessadoSelect" name="usuario_id" required>
+            <option value="">Selecione</option>
         </select>
         <br>
 
         <label for="animalSelect">Animal</label>
-           <select id="animalSelect" required>
-            <option>Selecione</option>
+           <select id="animalSelect" name="animais_id" required>
+            <option value="">Selecione</option>
         </select>
         <br>
         <label for="justificativa">Justificativa:</label>
-            <textarea id="justificativa" required></textarea>
+            <textarea id="justificativa" name="justificativa" required></textarea>
             <br>
 
-        <button class="Salvar">Solicitacao adocao</button>
+        <button type="submit" class="Salvar">Solicitacao adocao</button>
  </form>
 
 
@@ -287,13 +287,14 @@ main:not(:has(section:target)) #inicio {
   <section id="acompanhamento">
         <h2>Acompanhamento da adoção</h2>
 
+        <form id="formAcompanhamento" onsubmit="event.preventDefault(); atualizarAcompanhamento();">
         <label for="solicitacaoSelect">Solicitação:</label>
-        <select id="solicitacaoSelect">
+        <select id="solicitacaoSelect" name="solicitacao_id" required>
             <option value="">Selecione</option>
         </select>
 
         <label for="etapa">Etapa:</label>
-        <select id="etapa">
+        <select id="etapa" name="etapa" required>
             <option>Em análise</option>
             <option>Entrevista</option>
             <option>Visita</option>
@@ -303,11 +304,12 @@ main:not(:has(section:target)) #inicio {
         </select>
 
         <label for="observacao">Observação:</label>
-        <textarea id="observacao"></textarea>
+        <textarea id="observacao" name="observacao"></textarea>
 
-        <button class="salvar" onclick="atualizarProcesso()">
+        <button type="submit" class="salvar">
             Atualizar processo
         </button>
+        </form>
              <h2>Histórico</h2>
 
         <table>
@@ -342,6 +344,7 @@ main:not(:has(section:target)) #inicio {
 
 </main>
 
+<script src="index.js"></script>
 </body>
 
 

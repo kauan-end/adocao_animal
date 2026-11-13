@@ -5,7 +5,7 @@ async function cadastrarAnimal() {
 
     var dados = new FormData(form);
 
-    var promise = await fetch("php/animais.php", {
+    var promise = await fetch("backend/animais.php", {
         method: "POST",
         body: dados
     });
@@ -13,6 +13,10 @@ async function cadastrarAnimal() {
     var resposta = await promise.json();
 
     console.log(resposta);
+
+    if (promise.ok) {
+        form.reset();
+    }
 
     carregarAnimais();
 
@@ -25,7 +29,7 @@ async function cadastrarInteressado() {
 
     var dados = new FormData(form);
 
-    var promise = await fetch("php/interessados.php", {
+    var promise = await fetch("backend/interessados.php", {
         method: "POST",
         body: dados
     });
@@ -33,6 +37,10 @@ async function cadastrarInteressado() {
     var resposta = await promise.json();
 
     console.log(resposta);
+
+    if (promise.ok) {
+        form.reset();
+    }
 
     carregarInteressados();
 
@@ -45,7 +53,7 @@ async function solicitarAdocao() {
 
     var dados = new FormData(form);
 
-    var promise = await fetch("php/solicitacoes.php", {
+    var promise = await fetch("backend/solicitacoes.php", {
         method: "POST",
         body: dados
     });
@@ -54,14 +62,19 @@ async function solicitarAdocao() {
 
     console.log(resposta);
 
+    if (promise.ok) {
+        form.reset();
+    }
+
     carregarSolicitacoes();
+    acompanhar();
 
 }
 
 
 async function carregarAnimais() {
 
-    var promise = await fetch("php/animais.php", {
+    var promise = await fetch("backend/animais.php", {
         method: "GET"
     });
 
@@ -72,6 +85,11 @@ async function carregarAnimais() {
     var tabela = document.getElementById('listaAnimais');
 
     tabela.innerHTML = "";
+
+    var selectAnimal = document.getElementById('animalSelect');
+    if (selectAnimal) {
+        selectAnimal.innerHTML = '<option value="">Selecione</option>';
+    }
 
     resposta.forEach(function(animal) {
 
@@ -85,6 +103,13 @@ async function carregarAnimais() {
             animal.descricao
         ]);
 
+        if (selectAnimal) {
+            var opt = document.createElement('option');
+            opt.value = animal.id;
+            opt.textContent = (animal.nome || ('Animal #' + animal.id)) + ' (' + (animal.especie || '') + ')';
+            selectAnimal.appendChild(opt);
+        }
+
     });
 
 }
@@ -92,7 +117,7 @@ async function carregarAnimais() {
 
 async function carregarInteressados() {
 
-    var promise = await fetch("php/interessados.php", {
+    var promise = await fetch("backend/interessados.php", {
         method: "GET"
     });
 
@@ -104,6 +129,11 @@ async function carregarInteressados() {
 
     tabela.innerHTML = "";
 
+    var selectInteressado = document.getElementById('interessadoSelect');
+    if (selectInteressado) {
+        selectInteressado.innerHTML = '<option value="">Selecione</option>';
+    }
+
     resposta.forEach(function(interessado) {
 
         adicionarLinha('listaInteressados', [
@@ -112,6 +142,13 @@ async function carregarInteressados() {
             interessado.telefone
         ]);
 
+        if (selectInteressado) {
+            var opt = document.createElement('option');
+            opt.value = interessado.id;
+            opt.textContent = interessado.nome;
+            selectInteressado.appendChild(opt);
+        }
+
     });
 
 }
@@ -119,7 +156,7 @@ async function carregarInteressados() {
 
 async function carregarSolicitacoes() {
 
-    var promise = await fetch("php/solicitacoes.php", {
+    var promise = await fetch("backend/solicitacoes.php", {
         method: "GET"
     });
 
@@ -131,6 +168,11 @@ async function carregarSolicitacoes() {
 
     tabela.innerHTML = "";
 
+    var selectSolicitacao = document.getElementById('solicitacaoSelect');
+    if (selectSolicitacao) {
+        selectSolicitacao.innerHTML = '<option value="">Selecione</option>';
+    }
+
     resposta.forEach(function(solicitacao) {
 
         adicionarLinha('listaSolicitacoes', [
@@ -139,6 +181,13 @@ async function carregarSolicitacoes() {
             solicitacao.justificativa
         ]);
 
+        if (selectSolicitacao) {
+            var opt = document.createElement('option');
+            opt.value = solicitacao.id;
+            opt.textContent = '#' + solicitacao.id + ' - ' + solicitacao.interessado + ' / ' + solicitacao.animal;
+            selectSolicitacao.appendChild(opt);
+        }
+
     });
 
 }
@@ -146,7 +195,7 @@ async function carregarSolicitacoes() {
 
 async function acompanhar() {
 
-    var promise = await fetch("php/acompanhamento.php", {
+    var promise = await fetch("backend/acompanhamentos.php", {
         method: "GET"
     });
 
@@ -177,7 +226,7 @@ async function atualizarAcompanhamento() {
 
     var dados = new FormData(form);
 
-    var promise = await fetch("php/acompanhamento.php", {
+    var promise = await fetch("backend/acompanhamentos.php", {
         method: "POST",
         body: dados
     });
@@ -185,6 +234,10 @@ async function atualizarAcompanhamento() {
     var resposta = await promise.json();
 
     console.log(resposta);
+
+    if (promise.ok) {
+        form.reset();
+    }
 
     acompanhar();
 
@@ -268,3 +321,5 @@ carregarAnimais();
 carregarInteressados();
 
 carregarSolicitacoes();
+
+acompanhar();
