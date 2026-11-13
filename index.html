@@ -117,6 +117,7 @@ main:not(:has(section:target)) #inicio {
         <a href="#interessados"><button>Interessados</button></a>
         <a href="#adocao"><button>Solicitação de Adoção</button></a>
         <a href="#acompanhamento"><button>Acompanhamento</button></a>
+        <a href="#administracao"><button>Administração</button></a>
     </nav>
 </header>
 
@@ -323,6 +324,53 @@ main:not(:has(section:target)) #inicio {
             <tbody id="historico"></tbody>
         </table>
     </section>
+
+
+<section id="administracao">
+
+    <h2>Administração das solicitações</h2>
+
+    <h3>Solicitações recebidas</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Interessado</th>
+                <th>Animal</th>
+                <th>Justificativa</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaAdmin"></tbody>
+    </table>
+
+    <h3>Decisão do administrador</h3>
+
+    <form id="formAdmin" onsubmit="event.preventDefault(); decidirSolicitacao();">
+
+        <label for="solicitacaoAdmin">Solicitação:</label>
+        <select id="solicitacaoAdmin" name="solicitacao_id" required>
+            <option value="">Selecione</option>
+        </select>
+
+        <br><br>
+
+        <label for="statusAdmin">Decisão:</label>
+        <select id="statusAdmin" name="status" required>
+            <option value="">Selecione</option>
+            <option value="Aprovada">Aprovar</option>
+            <option value="Rejeitada">Rejeitar</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Enviar decisão</button>
+
+    </form>
+
+</section>
+
 
 </main>
 

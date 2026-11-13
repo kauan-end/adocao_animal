@@ -2,7 +2,6 @@
 async function cadastrarAnimal() {
 
     var form = document.getElementById('formAnimal');
-
     var dados = new FormData(form);
 
     var promise = await fetch("backend/animais.php", {
@@ -19,14 +18,12 @@ async function cadastrarAnimal() {
     }
 
     carregarAnimais();
-
 }
 
 
 async function cadastrarInteressado() {
 
     var form = document.getElementById('formInteressado');
-
     var dados = new FormData(form);
 
     var promise = await fetch("backend/interessados.php", {
@@ -43,14 +40,12 @@ async function cadastrarInteressado() {
     }
 
     carregarInteressados();
-
 }
 
 
 async function solicitarAdocao() {
 
     var form = document.getElementById('formAdocao');
-
     var dados = new FormData(form);
 
     var promise = await fetch("backend/solicitacoes.php", {
@@ -68,7 +63,7 @@ async function solicitarAdocao() {
 
     carregarSolicitacoes();
     acompanhar();
-
+    administrar();
 }
 
 
@@ -83,10 +78,10 @@ async function carregarAnimais() {
     console.log(resposta);
 
     var tabela = document.getElementById('listaAnimais');
-
     tabela.innerHTML = "";
 
     var selectAnimal = document.getElementById('animalSelect');
+
     if (selectAnimal) {
         selectAnimal.innerHTML = '<option value="">Selecione</option>';
     }
@@ -126,10 +121,10 @@ async function carregarInteressados() {
     console.log(resposta);
 
     var tabela = document.getElementById('listaInteressados');
-
     tabela.innerHTML = "";
 
     var selectInteressado = document.getElementById('interessadoSelect');
+
     if (selectInteressado) {
         selectInteressado.innerHTML = '<option value="">Selecione</option>';
     }
@@ -165,10 +160,10 @@ async function carregarSolicitacoes() {
     console.log(resposta);
 
     var tabela = document.getElementById('listaSolicitacoes');
-
     tabela.innerHTML = "";
 
     var selectSolicitacao = document.getElementById('solicitacaoSelect');
+
     if (selectSolicitacao) {
         selectSolicitacao.innerHTML = '<option value="">Selecione</option>';
     }
@@ -204,7 +199,6 @@ async function acompanhar() {
     console.log(resposta);
 
     var tabela = document.getElementById('historico');
-
     tabela.innerHTML = "";
 
     resposta.forEach(function(item) {
@@ -223,7 +217,6 @@ async function acompanhar() {
 async function atualizarAcompanhamento() {
 
     var form = document.getElementById('formAcompanhamento');
-
     var dados = new FormData(form);
 
     var promise = await fetch("backend/acompanhamentos.php", {
@@ -244,9 +237,11 @@ async function atualizarAcompanhamento() {
 }
 
 
+// ADMINISTRAÇÃO - FUNÇÕES ADICIONADAS
+
 async function administrar() {
 
-    var promise = await fetch("php/administracao.php", {
+    var promise = await fetch("backend/administracao.php", {
         method: "GET"
     });
 
@@ -255,8 +250,11 @@ async function administrar() {
     console.log(resposta);
 
     var tabela = document.getElementById('listaAdmin');
-
     tabela.innerHTML = "";
+
+    var select = document.getElementById('solicitacaoAdmin');
+
+    select.innerHTML = '<option value="">Selecione</option>';
 
     resposta.forEach(function(solicitacao) {
 
@@ -267,6 +265,14 @@ async function administrar() {
             solicitacao.status
         ]);
 
+        var opcao = document.createElement('option');
+
+        opcao.value = solicitacao.id;
+
+        opcao.textContent = 'Solicitação #' + solicitacao.id;
+
+        select.appendChild(opcao);
+
     });
 
 }
@@ -275,10 +281,9 @@ async function administrar() {
 async function decidirSolicitacao() {
 
     var form = document.getElementById('formAdmin');
-
     var dados = new FormData(form);
 
-    var promise = await fetch("php/administracao.php", {
+    var promise = await fetch("backend/administracao.php", {
         method: "POST",
         body: dados
     });
@@ -287,7 +292,10 @@ async function decidirSolicitacao() {
 
     console.log(resposta);
 
-    administrar();
+    if (promise.ok) {
+        form.reset();
+        administrar();
+    }
 
 }
 
@@ -315,7 +323,6 @@ function adicionarLinha(idTabela, valores) {
 
 
 
-
 carregarAnimais();
 
 carregarInteressados();
@@ -323,3 +330,5 @@ carregarInteressados();
 carregarSolicitacoes();
 
 acompanhar();
+
+administrar();
