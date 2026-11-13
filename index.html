@@ -129,11 +129,11 @@ main:not(:has(section:target)) #inicio {
         <h2>Cadastro de Animais</h2>
 
 <form> 
-    <label>Nome do animal</label>
+    <label for="nome">Nome do animal</label>
     <input type="text" id="nome">
     <br><br>
 
-    <label>Especie</label>
+    <label for="especieAnimal">Especie</label>
     <select id="especieAnimal" required>
         
         <option value="">Selecione...</option>
@@ -142,14 +142,14 @@ main:not(:has(section:target)) #inicio {
         <option>outro</option>
     </select>
 
-    <label>Raça</label>
-    <input type="text" id="nome">
+    <label for="racaAnimal">Raça</label>
+    <input type="text" id="racaAnimal">
     <br><br>
-    <label>Idade</label>
+    <label for="idadeAnimal">Idade</label>
     <input type="number" id="idadeAnimal" min="0">
     <br><br>
     
-    <label>Sexo</label>
+    <label for="sexoAnimal">Sexo</label>
         <select id="sexoAnimal" required>
         <option value="">Selecione...</option>
         <option>Macho</option>
@@ -157,7 +157,7 @@ main:not(:has(section:target)) #inicio {
 
        </select>
        <br><br>
-       <label>Porte</label>
+       <label for="porteAnimal">Porte</label>
         <select id="porteAnimal" required>
         <option value="">Selecione...</option>
         <option>Pequeno</option>
@@ -167,7 +167,7 @@ main:not(:has(section:target)) #inicio {
         </select>
        <br><br>
 
-       <label>Descrição</label>
+       <label for="descricaoAnimal">Descrição</label>
        <textarea id="descricaoAnimal"></textarea>
        <br><br>
 
@@ -199,32 +199,32 @@ main:not(:has(section:target)) #inicio {
     <h2>Cadastro de interessados</h2>
 
 <form>
-    <label>Nome</label>
-    <input type="text" id="nome Completo" required>
+    <label for="nomeCompleto">Nome</label>
+    <input type="text" id="nomeCompleto" required>
     <br>
-    <label>E-mail</label>
+    <label for="emailInteressado">E-mail</label>
     <input type="email" id="emailInteressado" required>
     <br>
-    <label>Telefone</label>
+    <label for="telefoneInteressado">Telefone</label>
     <input type="text" id="telefoneInteressado">
     <br>
-    <label>Cidade</label>
+    <label for="cidadeInteressado">Cidade</label>
     <input type="text" id="cidadeInteressado">
     <br>
-    <label>Possui outros animais?</label>
+    <label for="possuiAnimal">Possui outros animais?</label>
     <select id="possuiAnimal" required>
         <option value="">Selecione</option>
         <option>Sim</option>
         <option>Nao</option>
     </select>
     <br>
-    <label>Experiencia com animais?</label>
+    <label for="experienciaAnimal">Experiencia com animais?</label>
     <select id="experienciaAnimal" required>
         <option value="">Selecione</option>
         <option>Sim</option>
         <option>Nao</option>
     </select>
-    <label>Por que deseja adotar?</label>
+    <label for="motivoAdocao">Por que deseja adotar?</label>
         <textarea id="motivoAdocao" required></textarea>
     <button class="Salvar">Cadastrar interessados</button>
 
@@ -250,18 +250,18 @@ main:not(:has(section:target)) #inicio {
     <h2>Solicitacao de adocao</h2>
 
     <form>
-        <label>interessado</label>
+        <label for="interessadoSelect">interessado</label>
         <select id="interessadoSelect" required>
             <option>Selecione</option>
         </select>
         <br>
 
-        <label>Animal</label>
+        <label for="animalSelect">Animal</label>
            <select id="animalSelect" required>
             <option>Selecione</option>
         </select>
         <br>
-        <label>Justificativa:</label>
+        <label for="justificativa">Justificativa:</label>
             <textarea id="justificativa" required></textarea>
             <br>
 
@@ -287,12 +287,12 @@ main:not(:has(section:target)) #inicio {
   <section id="acompanhamento">
         <h2>Acompanhamento da adoção</h2>
 
-        <label>Solicitação:</label>
+        <label for="solicitacaoSelect">Solicitação:</label>
         <select id="solicitacaoSelect">
             <option value="">Selecione</option>
         </select>
 
-        <label>Etapa:</label>
+        <label for="etapa">Etapa:</label>
         <select id="etapa">
             <option>Em análise</option>
             <option>Entrevista</option>
@@ -302,7 +302,7 @@ main:not(:has(section:target)) #inicio {
             <option>Rejeitada</option>
         </select>
 
-        <label>Observação:</label>
+        <label for="observacao">Observação:</label>
         <textarea id="observacao"></textarea>
 
         <button class="salvar" onclick="atualizarProcesso()">
