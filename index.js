@@ -316,6 +316,69 @@ function adicionarLinha(idTabela, valores) {
 
 
 
+async function login() {
+
+    var form = document.getElementById('formLogin');
+
+    var dados = new FormData(form);
+
+    var promise = await fetch("backend/login.php", {
+        method: "POST",
+        body: dados
+    });
+
+    var resposta = await promise.json();
+
+    console.log(resposta);
+
+    if (promise.ok) {
+        form.reset();
+        window.location.hash = "#inicio";
+        verificarSessao();
+    } else {
+        alert(resposta.mensagem || "Erro ao fazer login");
+    }
+
+}
+
+
+async function logout() {
+
+    await fetch("backend/logout.php", {
+        method: "POST"
+    });
+
+    verificarSessao();
+    window.location.hash = "#login";
+
+}
+
+
+async function verificarSessao() {
+
+    var promise = await fetch("backend/login.php", {
+        method: "GET"
+    });
+
+    var resposta = await promise.json();
+
+    var linkLogin = document.getElementById('linkLogin');
+    var btnLogout = document.getElementById('btnLogout');
+    var statusSessao = document.getElementById('statusSessao');
+
+    if (resposta.logado) {
+        linkLogin.style.display = "none";
+        btnLogout.style.display = "inline-block";
+        statusSessao.textContent = "Olá, " + (resposta.usuario_nome || "usuário");
+    } else {
+        linkLogin.style.display = "inline-block";
+        btnLogout.style.display = "none";
+        statusSessao.textContent = "";
+    }
+
+}
+
+
 carregarAnimais();
 
 carregarInteressados();
@@ -323,3 +386,5 @@ carregarInteressados();
 carregarSolicitacoes();
 
 acompanhar();
+
+verificarSessao();

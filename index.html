@@ -117,13 +117,29 @@ main:not(:has(section:target)) #inicio {
         <a href="#interessados"><button>Interessados</button></a>
         <a href="#adocao"><button>Solicitação de Adoção</button></a>
         <a href="#acompanhamento"><button>Acompanhamento</button></a>
+        <a href="#login" id="linkLogin"><button>Login</button></a>
+        <button id="btnLogout" onclick="logout()" style="display: none;">Sair</button>
     </nav>
+    <p id="statusSessao"></p>
 </header>
 
 <main>
     <section id="inicio">
     <h2>Início</h2>
     <p>Bem-vindo ao sistema Vida Animal.</p>
+    </section>
+
+    <section id="login">
+        <h2>Login</h2>
+        <form id="formLogin" onsubmit="event.preventDefault(); login();">
+            <label for="emailLogin">E-mail</label>
+            <input type="email" id="emailLogin" name="email" required>
+            <br><br>
+            <label for="senhaLogin">Senha</label>
+            <input type="password" id="senhaLogin" name="senha" required>
+            <br><br>
+            <button type="submit" class="Salvar">Entrar</button>
+        </form>
     </section>
     <section id="animais">
         <h2>Cadastro de Animais</h2>
@@ -231,7 +247,7 @@ main:not(:has(section:target)) #inicio {
 </form>
 
 
-        <h2>Animais cadastrados</h2>
+        <h2>interessados cadastrados</h2>
 
         <table>
             <thead>
@@ -269,7 +285,7 @@ main:not(:has(section:target)) #inicio {
  </form>
 
 
-        <h2>Animais cadastrados</h2>
+        <h2>solicitação cadastrados</h2>
 
         <table>
             <thead>
@@ -342,7 +358,6 @@ main:not(:has(section:target)) #inicio {
 
 
 
-</main>
 
 <script src="index.js"></script>
 </body>
