@@ -28,6 +28,7 @@ USE `vida_animal`;
 -- Table structure for table `animais`
 --
 
+DROP TABLE IF EXISTS `solicitacao_adocao`;
 DROP TABLE IF EXISTS `animais`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -39,26 +40,9 @@ CREATE TABLE `animais` (
   `sexo` varchar(10) DEFAULT NULL,
   `porte` varchar(20) DEFAULT NULL,
   `nome` varchar(30) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `solicitacao_adocao`
---
-
-DROP TABLE IF EXISTS `solicitacao_adocao`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `solicitacao_adocao` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `animais_id` int(11) DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL,
-  `data_criado` timestamp NOT NULL DEFAULT current_timestamp(),
-  `motivação` text DEFAULT NULL,
-  `statos` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,21 +57,36 @@ CREATE TABLE `usuario` (
   `nome` varchar(60) NOT NULL,
   `idade` int(11) DEFAULT NULL,
   `email` varchar(60) NOT NULL,
-  `telefone` varchar(30) NOT NULL,
-  `senha` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `telefone` varchar(30) DEFAULT NULL,
+  `senha` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_usuario_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping events for database 'vida_animal'
+-- Table structure for table `solicitacao_adocao`
 --
 
---
--- Dumping routines for database 'vida_animal'
---
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `solicitacao_adocao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `animais_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `data_criado` timestamp NOT NULL DEFAULT current_timestamp(),
+  `motivação` text DEFAULT NULL,
+  `statos` varchar(40) DEFAULT NULL,
+  `observacao` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_solicitacao_animal` (`animais_id`),
+  KEY `fk_solicitacao_usuario` (`usuario_id`),
+  CONSTRAINT `fk_solicitacao_animal` FOREIGN KEY (`animais_id`) REFERENCES `animais` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_solicitacao_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -95,5 +94,3 @@ CREATE TABLE `usuario` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
-
--- Dump completed on 2026-11-13 18:53:52

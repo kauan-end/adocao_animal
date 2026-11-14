@@ -115,9 +115,9 @@ main:not(:has(section:target)) #inicio {
         <a href="#inicio"><button>Início</button></a>
         <a href="#animais"><button>Cadastro de Animais</button></a>
         <a href="#interessados"><button>Interessados</button></a>
-        <a href="#adocao"><button>Solicitação de Adoção</button></a>
-        <a href="#acompanhamento"><button>Acompanhamento</button></a>
-        <a href="#administracao"><button>Administração</button></a>
+        <a href="#adocao" id="linkAdocao"><button>Solicitação de Adoção</button></a>
+        <a href="#acompanhamento" id="linkAcompanhamento"><button>Acompanhamento</button></a>
+        <a href="#administracao" id="linkAdmin"><button>Administração</button></a>
         <a href="#login" id="linkLogin"><button>Login</button></a>
         <button id="btnLogout" onclick="logout()" style="display: none;">Sair</button>
     </nav>
@@ -210,6 +210,60 @@ main:not(:has(section:target)) #inicio {
             </thead>
             <tbody id="listaAnimais"></tbody>
         </table>
+
+        <h3>Editar Animal</h3>
+        <form id="formEditarAnimal" onsubmit="event.preventDefault(); editarAnimal();">
+            <label for="animalEditarSelect">Animal:</label>
+            <select id="animalEditarSelect" name="id" required>
+                <option value="">Selecione</option>
+            </select>
+            <br><br>
+            <label for="nomeEditar">Nome do animal</label>
+            <input type="text" id="nomeEditar" name="nome">
+            <br><br>
+            <label for="especieEditar">Espécie</label>
+            <select id="especieEditar" name="especie" required>
+                <option value="">Selecione...</option>
+                <option>Cachorro</option>
+                <option>Gato</option>
+                <option>outro</option>
+            </select>
+            <label for="racaEditar">Raça</label>
+            <input type="text" id="racaEditar" name="raca">
+            <br><br>
+            <label for="idadeEditar">Idade</label>
+            <input type="number" id="idadeEditar" name="idade" min="0">
+            <br><br>
+            <label for="sexoEditar">Sexo</label>
+            <select id="sexoEditar" name="sexo" required>
+                <option value="">Selecione...</option>
+                <option>Macho</option>
+                <option>femea</option>
+            </select>
+            <br><br>
+            <label for="porteEditar">Porte</label>
+            <select id="porteEditar" name="porte" required>
+                <option value="">Selecione...</option>
+                <option>Pequeno</option>
+                <option>Medio</option>
+                <option>Grande</option>
+                <option>Gigante</option>
+            </select>
+            <br><br>
+            <label for="descricaoEditar">Descrição</label>
+            <textarea id="descricaoEditar" name="descricao"></textarea>
+            <br><br>
+            <button type="submit" class="Salvar">Atualizar Animal</button>
+        </form>
+
+        <h3>Excluir Animal</h3>
+        <form id="formExcluirAnimal" onsubmit="event.preventDefault(); excluirAnimal();">
+            <label for="animalExcluirSelect">Animal:</label>
+            <select id="animalExcluirSelect" name="id" required>
+                <option value="">Selecione</option>
+            </select>
+            <button type="submit" class="Salvar">Excluir Animal</button>
+        </form>
     </section>
 
 <section id="interessados">
@@ -221,6 +275,9 @@ main:not(:has(section:target)) #inicio {
     <br>
     <label for="emailInteressado">E-mail</label>
     <input type="email" id="emailInteressado" name="email" required>
+    <br>
+    <label for="senhaInteressado">Senha</label>
+    <input type="password" id="senhaInteressado" name="senha" required>
     <br>
     <label for="telefoneInteressado">Telefone</label>
     <input type="text" id="telefoneInteressado" name="telefone">
@@ -261,6 +318,34 @@ main:not(:has(section:target)) #inicio {
             </thead>
             <tbody id="listaInteressados"></tbody>
         </table>
+
+        <h3>Editar Interessado</h3>
+        <form id="formEditarInteressado" onsubmit="event.preventDefault(); editarInteressado();">
+            <label for="interessadoEditarSelect">Interessado:</label>
+            <select id="interessadoEditarSelect" name="id" required>
+                <option value="">Selecione</option>
+            </select>
+            <br>
+            <label for="nomeEditarInteressado">Nome</label>
+            <input type="text" id="nomeEditarInteressado" name="nome" required>
+            <br>
+            <label for="emailEditarInteressado">E-mail</label>
+            <input type="email" id="emailEditarInteressado" name="email" required>
+            <br>
+            <label for="telefoneEditarInteressado">Telefone</label>
+            <input type="text" id="telefoneEditarInteressado" name="telefone">
+            <br>
+            <button type="submit" class="Salvar">Atualizar Interessado</button>
+        </form>
+
+        <h3>Excluir Interessado</h3>
+        <form id="formExcluirInteressado" onsubmit="event.preventDefault(); excluirInteressado();">
+            <label for="interessadoExcluirSelect">Interessado:</label>
+            <select id="interessadoExcluirSelect" name="id" required>
+                <option value="">Selecione</option>
+            </select>
+            <button type="submit" class="Salvar">Excluir Interessado</button>
+        </form>
     </section>
 
 <section id="adocao">
@@ -383,6 +468,15 @@ main:not(:has(section:target)) #inicio {
 
         <button type="submit">Enviar decisão</button>
 
+    </form>
+
+    <h3>Excluir Solicitação</h3>
+    <form id="formExcluirSolicitacao" onsubmit="event.preventDefault(); excluirSolicitacao();">
+        <label for="solicitacaoExcluirSelect">Solicitação:</label>
+        <select id="solicitacaoExcluirSelect" name="solicitacao_id" required>
+            <option value="">Selecione</option>
+        </select>
+        <button type="submit">Excluir solicitação</button>
     </form>
 
 </section>
